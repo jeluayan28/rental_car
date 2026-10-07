@@ -16,6 +16,12 @@ class Car extends Model
 {
     use HasFactory;
 
+    public const CATEGORIES = ['Sport', 'SUV', 'Sedan', 'Luxury', 'Family', 'Adventure'];
+
+    public const TRANSMISSIONS = ['Automatic', 'Manual'];
+
+    public const FUEL_TYPES = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
+
     protected $fillable = [
         'brand', 'model', 'year', 'category', 'description', 'price_per_day',
         'seats', 'transmission', 'fuel_type', 'image', 'status',
@@ -40,6 +46,12 @@ class Car extends Model
             str_starts_with($this->image, 'http') => $this->image,
             default => Storage::url($this->image),
         });
+    }
+
+    /** Whether `image` points at a file we stored (as opposed to an external URL). */
+    public function hasStoredImage(): bool
+    {
+        return filled($this->image) && ! str_starts_with($this->image, 'http');
     }
 
     public function isAvailable(): bool

@@ -21,9 +21,9 @@
             </p>
 
             @if ($cars->isEmpty())
-                <div class="mt-16 rounded-3xl border border-dashed border-cream/20 p-12 text-center text-cream/60">
-                    No cars are available at the moment. Please check back soon.
-                </div>
+                <x-empty-state class="mt-16" title="No cars on the road right now." text="Every ride is out or in the garage. Check back soon, or come back later today.">
+                    <a href="{{ route('home') }}" class="inline-flex items-center rounded-full border border-cream/30 px-6 py-3 font-semibold text-cream transition hover:border-electric hover:text-electric">Back to home</a>
+                </x-empty-state>
             @else
                 <div class="mt-14 grid gap-7 sm:grid-cols-2 xl:grid-cols-3">
                     @foreach ($cars as $car)

@@ -8,20 +8,13 @@
         <div class="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 sm:pt-32 lg:px-8">
             <a href="{{ route('cars.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-cream/60 transition hover:text-sun">&larr; All cars</a>
 
-            @if (session('status'))
-                <div role="status" class="mt-6 flex items-start gap-3 rounded-2xl border border-electric/40 bg-electric/10 px-5 py-4 text-sm text-cream">
-                    <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-electric"></span>
-                    <p>{{ session('status') }}</p>
-                </div>
-            @endif
+            
 
             <div class="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-12">
                 {{-- Vehicle --}}
                 <div class="lg:col-span-7">
                     <div class="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-cream/10 bg-graphite">
-                        @if ($car->image_url)
-                            <img src="{{ $car->image_url }}" alt="{{ $car->brand }} {{ $car->model }}" class="h-full w-full object-cover">
-                        @endif
+                        <x-cars.media :car="$car" />
                         <div class="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-transparent"></div>
 
                         <span class="absolute left-5 top-5 rounded-full bg-midnight/80 px-3 py-1 text-xs font-bold uppercase tracking-widest text-sun backdrop-blur">{{ $car->category }}</span>

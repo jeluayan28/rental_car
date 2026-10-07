@@ -1,36 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+{{-- Authenticated account pages (e.g. profile) share the public ROAMR shell: dark navbar, footer, same palette. --}}
+<x-public-layout title="Account">
+    <section class="relative isolate overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+            <div class="absolute -right-[10%] top-0 h-[26rem] w-[26rem] rounded-full bg-tangerine/15 blur-[130px]"></div>
+            <div class="absolute -left-[10%] top-[40%] h-[24rem] w-[24rem] rounded-full bg-electric/10 blur-[130px]"></div>
+        </div>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
+        <div class="mx-auto max-w-3xl px-4 pb-24 pt-32 sm:px-6 sm:pt-40 lg:px-8">
             @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
+                <header>{{ $header }}</header>
             @endisset
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <div class="mt-10">{{ $slot }}</div>
         </div>
-    </body>
-</html>
+    </section>
+</x-public-layout>

@@ -22,6 +22,7 @@
 
         <div class="hidden items-center gap-2 md:flex">
             @auth
+                @if (auth()->user()->isAdmin())<x-nav.link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')" class="mr-4">Admin</x-nav.link>@endif
                 <x-nav.link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="mr-4">Dashboard</x-nav.link>
                 <x-nav.link :href="route('profile.edit')" :active="request()->routeIs('profile.*')" class="mr-4">Profile</x-nav.link>
                 <form method="POST" action="{{ route('logout') }}">
@@ -41,7 +42,7 @@
         </button>
     </div>
 
-    <div x-show="open" x-cloak x-transition.opacity class="border-t border-cream/10 md:hidden">
+    <div x-show="open" x-cloak x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" x-on:keydown.escape.window="open = false" class="border-t border-cream/10 md:hidden">
         <div class="space-y-1 px-4 py-4">
             @foreach ($links as $link)
                 <x-nav.link :href="$link['href']" :active="$link['active']" class="block py-2 text-base">{{ $link['label'] }}</x-nav.link>
@@ -49,6 +50,7 @@
 
             <div class="mt-4 flex flex-col gap-2 border-t border-cream/10 pt-4">
                 @auth
+                    @if (auth()->user()->isAdmin())<x-nav.link :href="route('admin.dashboard')" class="block py-2 text-base">Admin</x-nav.link>@endif
                     <x-nav.link :href="route('dashboard')" class="block py-2 text-base">Dashboard</x-nav.link>
                     <x-nav.link :href="route('profile.edit')" class="block py-2 text-base">Profile</x-nav.link>
                     <form method="POST" action="{{ route('logout') }}">

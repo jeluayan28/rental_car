@@ -5,12 +5,7 @@
    class="car-card group relative flex flex-col overflow-hidden rounded-[2rem] border border-cream/10 bg-graphite transition duration-300 ease-out hover:-translate-y-2 hover:border-tangerine/60 hover:shadow-[0_28px_70px_-20px_rgba(255,107,53,.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-electric">
 
     <div class="relative aspect-[4/3] overflow-hidden bg-midnight [clip-path:polygon(0_0,100%_0,100%_90%,0_100%)]">
-        @if ($car->image_url)
-            <img src="{{ $car->image_url }}" alt="{{ $car->brand }} {{ $car->model }}" loading="lazy"
-                 class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110">
-        @else
-            <div class="flex h-full items-center justify-center bg-gradient-to-br from-graphite to-midnight text-6xl font-extrabold text-cream/20">{{ $car->brand }}</div>
-        @endif
+        <x-cars.media :car="$car" img-class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
         <div class="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/10 to-transparent"></div>
         <div class="absolute inset-0 bg-tangerine/0 mix-blend-soft-light transition duration-500 group-hover:bg-tangerine/25"></div>
 

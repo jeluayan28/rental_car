@@ -55,9 +55,7 @@
                     <a href="{{ route('bookings.show', $active) }}"
                        class="group mt-5 grid overflow-hidden rounded-[2rem] border border-cream/10 bg-graphite shadow-[0_30px_80px_-30px_rgba(0,0,0,.8)] transition duration-300 hover:border-tangerine/50 hover:shadow-[0_30px_80px_-30px_rgba(255,107,53,.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-electric lg:grid-cols-5">
                         <div class="relative min-h-56 overflow-hidden bg-midnight lg:col-span-2">
-                            @if ($active->car->image_url)
-                                <img src="{{ $active->car->image_url }}" alt="{{ $active->car->brand }} {{ $active->car->model }}" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105">
-                            @endif
+                            <div class="absolute inset-0 transition duration-700 group-hover:scale-105"><x-cars.media :car="$active->car" /></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-graphite/80 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-graphite/70"></div>
                             <span class="absolute left-5 top-5 rounded-full bg-midnight/80 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-sun backdrop-blur">{{ $active->car->category }}</span>
                         </div>
@@ -102,13 +100,11 @@
                         </div>
                     </a>
                 @else
-                    <div class="mt-5 rounded-[2rem] border border-dashed border-cream/20 p-10 text-center">
-                        <p class="text-2xl font-extrabold text-cream">No active booking.</p>
-                        <p class="mt-2 text-cream/60">The road&rsquo;s open. Pick a ride and set your dates.</p>
-                        <a href="{{ route('cars.index') }}" class="group mt-6 inline-flex items-center gap-2 rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight transition hover:bg-sun">
+                    <x-empty-state class="mt-5" title="No active booking." text="The road's open. Pick a ride and set your dates.">
+                        <a href="{{ route('cars.index') }}" class="group inline-flex items-center gap-2 rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight transition hover:bg-sun">
                             Browse Cars <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
                         </a>
-                    </div>
+                    </x-empty-state>
                 @endif
             </div>
 
@@ -122,7 +118,7 @@
                 </div>
 
                 @if ($history->isEmpty())
-                    <p class="mt-5 rounded-2xl border border-dashed border-cream/15 px-6 py-8 text-cream/55">Your past trips will show up here.</p>
+                    <x-empty-state class="mt-5 !py-10" title="No trips yet." text="Your past trips will show up here." />
                 @else
                     <div class="mt-5 space-y-3">
                         @foreach ($history as $booking)

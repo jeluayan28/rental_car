@@ -7,10 +7,7 @@
          class="group flex flex-col overflow-hidden rounded-3xl border border-cream/10 bg-graphite/60 transition hover:border-tangerine/60">
 
     <div class="relative aspect-[16/10] overflow-hidden bg-midnight">
-        @if ($car->image_url)
-            <img src="{{ $car->image_url }}" alt="{{ $car->brand }} {{ $car->model }}" loading="lazy"
-                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
-        @endif
+        <x-cars.media :car="$car" img-class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
         <div class="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-transparent"></div>
         <span class="absolute left-4 top-4 rounded-full bg-midnight/80 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-sun backdrop-blur">{{ $car->category }}</span>
     </div>

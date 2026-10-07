@@ -4,6 +4,56 @@
 
 [x-cloak] { display: none !important; }
 
+/* ---- Global polish ---- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    color-scheme: dark;
+    background: #0B1020;
+    scrollbar-color: #2a3350 #0B1020;
+}
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: #FF6B35; color: #0B1020; }
+:focus-visible { outline: 2px solid #2EC4FF; outline-offset: 3px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; }
+
+/* Press feedback on pill buttons and links */
+a.rounded-full, button.rounded-full { transition-property: color, background-color, border-color, box-shadow, transform, opacity; transition-duration: .2s; }
+a.rounded-full:active, button.rounded-full:active { transform: scale(.97); }
+
+/* Images fade in once loaded (JS adds .is-loading until then) */
+img { transition: opacity .5s ease; }
+img.is-loading { opacity: 0; }
+.skeleton { background: linear-gradient(100deg, #151b30 30%, #1B2236 50%, #151b30 70%); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* Submit buttons show a spinner while a form is being sent */
+.is-submitting { position: relative; pointer-events: none; color: transparent !important; }
+.is-submitting::after {
+    content: ''; position: absolute; inset: 0; margin: auto; width: 1.1rem; height: 1.1rem;
+    border: 2px solid var(--spin, #0B1020); border-top-color: transparent; border-radius: 9999px; animation: spin .7s linear infinite;
+}
+.is-submitting.border { --spin: #F4F1DE; }
+
+/* Toasts */
+.toast-in { animation: toast-in .45s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes toast-in { from { opacity: 0; transform: translate3d(1.5rem, 0, 0); } }
+
+/* Animated underline for nav links */
+.nav-underline { position: relative; }
+.nav-underline::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 100%; background: #FFC857;
+    transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+.nav-underline:hover::after, .nav-underline[aria-current]::after { transform: scaleX(1); }
+
+/* Hero scroll cue + parallax */
+.scroll-cue span { animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 0%, 100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(6px); opacity: 1; } }
+.parallax { transform: translate3d(calc(var(--hs, 0) * -48px), calc(var(--hs, 0) * 18px), 0); will-change: transform; }
+
 /* ---- Landing hero ---- */
 .grain::after {
     content: '';
@@ -107,3 +157,10 @@
 .car-card .dot { animation: ping-dot 2s cubic-bezier(0, 0, .2, 1) infinite; }
 @keyframes ping-dot { 75%, 100% { transform: scale(2.2); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .car-card, .car-card .dot { animation: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .skeleton, .toast-in, .scroll-cue span { animation: none; }
+    .parallax { transform: none; }
+    img { transition: none; }
+}

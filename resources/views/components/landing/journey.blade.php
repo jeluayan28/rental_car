@@ -34,19 +34,13 @@
 
         <x-landing.destinations />
         <x-landing.vibes />
-        <x-landing.rides :cars="$cars" :featured-ids="$featuredIds" />
         <x-landing.selector :showcase="$showcase" />
-
-        {{-- Arrival --}}
-        <section class="relative px-4 pb-28 pl-14 sm:px-6 sm:pl-20 lg:px-8 lg:pl-28">
-            <x-landing.waypoint n="GO" top="top-0" />
-            <div data-reveal class="flex flex-col items-start gap-5 pt-1">
-                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-electric">You&rsquo;ve arrived</p>
-                <a href="{{ route('cars.index') }}"
-                   class="group inline-flex items-center gap-2 rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight shadow-[0_10px_40px_-10px_rgba(255,107,53,.8)] transition hover:bg-sun focus:outline-none focus-visible:ring-2 focus-visible:ring-electric">
-                    See the full fleet <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
-        </section>
+        <x-landing.rides :cars="$cars" :featured-ids="$featuredIds" />
+        <x-landing.how-it-works />
+        <x-landing.finale :stats="[
+            'cars' => $cars->count(),
+            'categories' => $cars->pluck('category')->unique()->count(),
+            'from' => (int) $cars->min('price_per_day'),
+        ]" />
     </div>
 </div>

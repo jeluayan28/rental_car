@@ -20,9 +20,7 @@
             <div class="mt-12 overflow-hidden rounded-[2rem] border border-cream/10 bg-graphite shadow-[0_30px_80px_-30px_rgba(0,0,0,.8)]">
                 <div class="grid sm:grid-cols-5">
                     <div class="relative min-h-48 bg-midnight sm:col-span-2">
-                        @if ($booking->car->image_url)
-                            <img src="{{ $booking->car->image_url }}" alt="{{ $booking->car->brand }} {{ $booking->car->model }}" class="absolute inset-0 h-full w-full object-cover">
-                        @endif
+                        <div class="absolute inset-0"><x-cars.media :car="$booking->car" /></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-graphite/80 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-graphite/60"></div>
                     </div>
 

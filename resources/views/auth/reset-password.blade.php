@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Reset password" subtitle="Choose a new password for your account.">
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 

@@ -33,7 +33,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
+            'serve' => false, // ROAMR doesn't use signed local-disk URLs; this drops the extra GET/PUT storage/{path} routes.
             'throw' => false,
             'report' => false,
         ],

@@ -1,4 +1,4 @@
-<section class="hero grain relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-midnight pb-20 pt-28 sm:pt-32 lg:pb-0">
+<section data-hero class="hero grain relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-midnight pb-20 pt-24 sm:pt-28 lg:pb-0">
     {{-- Atmosphere: warm glow behind the car, cool glow top-left --}}
     <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
         <div class="absolute -right-[10%] top-[18%] h-[70%] w-[70%] rounded-full bg-tangerine/20 blur-[120px]"></div>
@@ -43,13 +43,13 @@
     <span class="dot absolute right-[30%] top-[16%] h-1 w-1 rounded-full bg-cream" style="animation-delay: 2.2s" aria-hidden="true"></span>
 
     {{-- Copy --}}
-    <div class="relative z-20 mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:flex lg:items-center lg:px-8 lg:pb-16">
+    <div class="relative z-20 mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:flex lg:items-center lg:px-8 lg:pb-28">
         <div class="max-w-3xl">
             <p class="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-sun">
                 <span class="h-px w-10 bg-sun"></span> Car rental &amp; adventure
             </p>
 
-            <h1 class="text-[13.5vw] font-extrabold uppercase leading-[0.88] tracking-tight text-cream sm:text-[11vw] lg:text-[clamp(4.5rem,7.6vw,7.25rem)]">
+            <h1 class="text-[11.5vw] font-extrabold uppercase leading-[0.88] tracking-tight text-cream sm:text-[9vw] lg:text-[clamp(3.5rem,6vw,5.75rem)]">
                 Your next<br>
                 <span class="bg-gradient-to-r from-tangerine via-tangerine to-sun bg-clip-text text-transparent">Adventure</span><br>
                 starts here.
@@ -73,7 +73,7 @@
 
     {{-- Car: bleeds off the right edge, overlapping the road --}}
     <div class="car-in relative z-10 -mb-3 ml-auto mt-10 w-[125%] max-w-none translate-x-[8%] sm:w-[105%] lg:absolute lg:bottom-4 lg:right-[-6vw] lg:mt-0 lg:w-[62vw] lg:max-w-[1100px] lg:translate-x-0">
-        <x-landing.hero-car class="w-full" />
+        <div class="parallax"><x-landing.hero-car :spin="true" class="w-full" /></div>
 
         {{-- Spec badges --}}
         <div class="badge-float absolute left-[36%] top-[-2%] flex items-center gap-2 rounded-full border border-cream/15 bg-midnight/60 px-3 py-1.5 text-[11px] font-semibold text-cream backdrop-blur sm:text-xs">
@@ -86,4 +86,9 @@
             <span class="h-1.5 w-1.5 rounded-full bg-tangerine"></span> Automatic · 4 seats
         </div>
     </div>
+    {{-- Scroll cue: points at the road that starts below the hero --}}
+    <a href="#destinations" class="scroll-cue absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-cream/55 transition hover:text-sun lg:flex" aria-label="Scroll to start the trip">
+        <span class="flex h-9 w-5 items-start justify-center rounded-full border border-cream/30 pt-1.5"><span class="block h-2 w-0.5 rounded-full bg-sun"></span></span>
+        Start the trip
+    </a>
 </section>

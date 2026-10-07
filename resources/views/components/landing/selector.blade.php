@@ -34,9 +34,9 @@
             this.raf = requestAnimationFrame(step);
         },
     }">
-    <x-landing.waypoint n="04" />
+    <x-landing.waypoint n="03" />
 
-    <x-landing.section-heading step="04" label="Compare rides" accent="text-electric">
+    <x-landing.section-heading step="03" label="Meet the lineup" accent="text-electric">
         Not all rides are <span class="text-tangerine">created equal.</span>
     </x-landing.section-heading>
 
@@ -59,10 +59,8 @@
                         <div class="pointer-events-none absolute inset-x-[10%] bottom-0 h-3/4 rounded-full opacity-30 blur-[90px]" style="background: var(--accent)" aria-hidden="true"></div>
 
                         <div class="relative mt-14 drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]">
-                            <div class="aspect-[16/10] overflow-hidden bg-graphite [clip-path:polygon(9%_0,100%_0,100%_100%,0_100%)]">
-                                @if ($car['image'])
-                                    <img src="{{ $car['image'] }}" alt="{{ $car['name'] }}" loading="lazy" class="h-full w-full object-cover">
-                                @endif
+                            <div class="group aspect-[16/10] overflow-hidden bg-graphite [clip-path:polygon(9%_0,100%_0,100%_100%,0_100%)]">
+                                <x-cars.media :car="(object) ['image_url' => $car['image'], 'brand' => $car['brand'], 'model' => $car['model'], 'category' => $car['category']]" />
                                 <div class="absolute inset-0 bg-gradient-to-tr from-midnight/50 via-transparent to-transparent"></div>
                             </div>
                             <span class="absolute -bottom-2 left-[4%] h-1 w-1/3 rounded-full" style="background: var(--accent)"></span>

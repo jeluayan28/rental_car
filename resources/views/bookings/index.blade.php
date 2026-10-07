@@ -11,10 +11,9 @@
             </h1>
 
             @if ($bookings->isEmpty())
-                <div class="mt-12 rounded-[2rem] border border-dashed border-cream/20 p-10 text-center">
-                    <p class="text-2xl font-extrabold text-cream">No bookings yet.</p>
-                    <a href="{{ route('cars.index') }}" class="mt-6 inline-flex rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight transition hover:bg-sun">Browse Cars &rarr;</a>
-                </div>
+                <x-empty-state class="mt-12" title="No bookings yet." text="When you reserve a car, your trips show up here.">
+                    <a href="{{ route('cars.index') }}" class="rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight transition hover:bg-sun">Browse Cars &rarr;</a>
+                </x-empty-state>
             @else
                 <div class="mt-12 space-y-3">
                     @foreach ($bookings as $booking)

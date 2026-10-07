@@ -4,9 +4,7 @@
 <a href="{{ route('bookings.show', $booking) }}"
    class="group flex items-center gap-4 rounded-2xl border border-cream/10 bg-graphite/60 p-3 pr-5 transition duration-300 hover:-translate-y-0.5 hover:border-tangerine/50 hover:shadow-[0_20px_50px_-25px_rgba(255,107,53,.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-electric sm:gap-5">
     <div class="h-16 w-20 shrink-0 overflow-hidden rounded-xl bg-midnight sm:h-20 sm:w-28">
-        @if ($booking->car->image_url)
-            <img src="{{ $booking->car->image_url }}" alt="" loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-110">
-        @endif
+        <x-cars.media :car="$booking->car" img-class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
     </div>
 
     <div class="min-w-0 flex-1">

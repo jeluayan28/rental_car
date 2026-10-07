@@ -8,6 +8,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBookingRequest extends FormRequest
 {
+    public const MAX_RENTAL_DAYS = 90;
+
     public function authorize(): bool
     {
         return $this->user() !== null; // Customers must be logged in (the route is also behind `auth`).
@@ -39,6 +41,21 @@ class StoreBookingRequest extends FormRequest
         return [
             function (Validator $validator) {
                 if ($validator->errors()->isNotEmpty()) {
+                    return;
+                }
+
+                $pickup = $this->date('pickup_date');
+                $return = $this->date('return_date');
+
+                // Keep dates sane so totals can never overflow the database columns.
+                if ($pickup->gt(today()->addYear())) {
+                    $validator->errors()->add('pickup_date', 'Bookings can be made up to one year in advance.');
+
+                    return;
+                }
+                if ($pickup->diffInDays($return) > self::MAX_RENTAL_DAYS) {
+                    $validator->errors()->add('return_date', 'Rentals are limited to '.self::MAX_RENTAL_DAYS.' days.');
+
                     return;
                 }
 

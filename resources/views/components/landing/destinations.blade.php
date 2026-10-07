@@ -1,4 +1,4 @@
-<section id="how-it-works" class="relative px-4 py-24 pl-14 sm:px-6 sm:pl-20 lg:px-8 lg:py-32 lg:pl-28">
+<section id="destinations" class="relative px-4 py-24 pl-14 sm:px-6 sm:pl-20 lg:px-8 lg:py-32 lg:pl-28">
     <x-landing.waypoint n="01" />
 
     <x-landing.section-heading step="01" label="Choose your destination">

@@ -1,9 +1,9 @@
 @props(['cars', 'featuredIds' => []])
 
 <section id="rides" class="relative scroll-mt-16 px-4 py-24 pl-14 sm:px-6 sm:pl-20 lg:px-8 lg:py-32 lg:pl-28">
-    <x-landing.waypoint n="03" />
+    <x-landing.waypoint n="04" />
 
-    <x-landing.section-heading step="03" label="Choose your ride" accent="text-tangerine">
+    <x-landing.section-heading step="04" label="Choose your ride" accent="text-tangerine">
         Now pick <span class="text-sun">your ride.</span>
         <x-slot:intro>Fresh off the lot and ready to roll. Book by the day.</x-slot:intro>
     </x-landing.section-heading>
@@ -17,7 +17,7 @@
     </div>
 
     @if ($cars->isEmpty())
-        <p class="mt-6 text-cream/60">No cars are available right now. Check back soon.</p>
+        <x-empty-state class="mt-6" title="No cars available right now." text="Check back soon." />
     @else
         <div data-reveal class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             @foreach ($cars as $car)

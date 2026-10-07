@@ -29,6 +29,8 @@ class HomeController extends Controller
             ->map(fn (Car $car) => [
                 'id' => $car->id,
                 'name' => "{$car->brand} {$car->model}",
+                'brand' => $car->brand,
+                'model' => $car->model,
                 'year' => $car->year,
                 'category' => $car->category,
                 'seats' => $car->seats,
