@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias(['admin' => EnsureUserIsAdmin::class]);
+
+        // Behind Vercel's proxy the request arrives as plain HTTP; trust it so https URLs are generated.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

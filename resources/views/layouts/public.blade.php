@@ -1,3 +1,8 @@
+@php
+    // PublicLayout is a class component, so attributes arrive in $attributes (not as variables).
+    $pageTitle = $attributes->get('title');
+    $pageDescription = $attributes->get('description', 'ROAMR is a car rental and adventure platform. Pick a ride, choose your dates and hit the road.');
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -5,10 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#0B1020">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ isset($title) ? $title.' · ' : '' }}{{ config('app.name') }}{{ isset($title) ? '' : ' — Car Rental & Adventure' }}</title>
-        <meta name="description" content="{{ $description ?? 'ROAMR is a car rental and adventure platform. Pick a ride, choose your dates and hit the road.' }}">
-        <meta property="og:title" content="{{ isset($title) ? $title.' · ' : '' }}{{ config('app.name') }}">
-        <meta property="og:description" content="{{ $description ?? 'Pick a ride. Make it yours.' }}">
+        <title>{{ $pageTitle ? $pageTitle.' · ' : '' }}{{ config('app.name') }}{{ $pageTitle ? '' : ' — Car Rental & Adventure' }}</title>
+        <meta name="description" content="{{ $pageDescription }}">
+        <meta property="og:title" content="{{ $pageTitle ? $pageTitle.' · ' : '' }}{{ config('app.name') }}">
+        <meta property="og:description" content="{{ $pageDescription }}">
         <meta property="og:type" content="website">
         <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
 

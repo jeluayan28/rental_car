@@ -61,7 +61,6 @@
                 <a href="{{ route('cars.index') }}"
                    class="group inline-flex items-center gap-2 rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight shadow-[0_10px_40px_-10px_rgba(255,107,53,.8)] transition hover:bg-sun focus:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-midnight">
                     Explore Cars
-                    <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
                 </a>
                 <a href="#how-it-works"
                    class="inline-flex items-center rounded-full border border-cream/30 px-7 py-3.5 font-semibold text-cream transition hover:border-electric hover:text-electric focus:outline-none focus-visible:ring-2 focus-visible:ring-electric">
@@ -73,7 +72,7 @@
 
     {{-- Car: bleeds off the right edge, overlapping the road --}}
     <div class="car-in relative z-10 -mb-3 ml-auto mt-10 w-[125%] max-w-none translate-x-[8%] sm:w-[105%] lg:absolute lg:bottom-4 lg:right-[-6vw] lg:mt-0 lg:w-[62vw] lg:max-w-[1100px] lg:translate-x-0">
-        <div class="parallax"><x-landing.hero-car :spin="true" class="w-full" /></div>
+        <div class="parallax"><img src="{{ asset('car_landing%20page.png') }}" alt="Orange Ferrari 458 Speciale" class="-mb-[9%] -mt-[14%] w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]" draggable="false"></div>
 
         {{-- Spec badges --}}
         <div class="badge-float absolute left-[36%] top-[-2%] flex items-center gap-2 rounded-full border border-cream/15 bg-midnight/60 px-3 py-1.5 text-[11px] font-semibold text-cream backdrop-blur sm:text-xs">

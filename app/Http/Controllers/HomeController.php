@@ -4,20 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Enums\CarStatus;
 use App\Models\Car;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
+use Throwable;
 
 class HomeController extends Controller
 {
     /** Categories shown in the landing page car selector, in display order. */
     private const SELECTOR_CATEGORIES = ['Sport', 'SUV', 'Sedan', 'Luxury', 'Adventure'];
 
+    /** The landing page must still render (with empty states) if the database is unreachable. */
+    private function availableCars(): Collection
+    {
+        try {
+            return Car::query()
+                ->where('status', CarStatus::Available)
+                ->orderBy('category')
+                ->orderByDesc('price_per_day')
+                ->get();
+        } catch (Throwable $e) {
+            report($e);
+
+            return new Collection;
+        }
+    }
+
     public function index(): View
     {
-        $cars = Car::query()
-            ->where('status', CarStatus::Available)
-            ->orderBy('category')
-            ->orderByDesc('price_per_day')
-            ->get();
+        $cars = $this->availableCars();
 
         // One headline car per category is "featured"; picking a vibe reveals the rest.
         $featuredIds = $cars->unique('category')->pluck('id')->all();

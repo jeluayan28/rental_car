@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Enums\BookingStatus;
 use App\Models\Car;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
+use Throwable;
 
 class CarController extends Controller
 {
@@ -12,13 +14,19 @@ class CarController extends Controller
 
     public function index(): View
     {
-        $cars = Car::query()
-            ->available()
-            ->orderBy('category')
-            ->orderBy('brand')
-            ->orderBy('model')
-            ->paginate(self::PER_PAGE)
-            ->withQueryString();
+        try {
+            $cars = Car::query()
+                ->available()
+                ->orderBy('category')
+                ->orderBy('brand')
+                ->orderBy('model')
+                ->paginate(self::PER_PAGE)
+                ->withQueryString();
+        } catch (Throwable $e) {
+            // Database unreachable: show the empty state instead of an error page.
+            report($e);
+            $cars = new LengthAwarePaginator([], 0, self::PER_PAGE);
+        }
 
         return view('cars.index', compact('cars'));
     }

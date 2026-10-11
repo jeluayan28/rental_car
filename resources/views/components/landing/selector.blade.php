@@ -120,7 +120,7 @@
                 <a :href="'{{ url('/cars') }}/' + cars[active].id"
                    href="{{ route('cars.show', $items[0]['id']) }}"
                    class="group inline-flex items-center gap-2 rounded-full bg-tangerine px-7 py-3.5 font-bold text-midnight shadow-[0_10px_40px_-10px_rgba(255,107,53,.8)] transition hover:bg-sun focus:outline-none focus-visible:ring-2 focus-visible:ring-electric">
-                    Rent This Ride <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                    Rent This Ride
                 </a>
             </div>
         </div>

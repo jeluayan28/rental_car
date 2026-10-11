@@ -6,7 +6,7 @@
 
     {{-- The car has arrived: parked at the end of the road --}}
     <div class="pointer-events-none absolute right-[-8vw] top-[22%] hidden w-[46vw] max-w-[760px] lg:block" aria-hidden="true">
-        <div data-reveal><x-landing.hero-car /></div>
+        <div data-reveal><img src="{{ asset('car_landing%20page.png') }}" alt="" class="w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]" draggable="false"></div>
     </div>
 
     <div class="relative z-10 pt-1">
@@ -19,7 +19,7 @@
         <div data-reveal style="--d:.24s" class="mt-10 flex flex-wrap items-center gap-4">
             <a href="{{ route('cars.index') }}"
                class="group inline-flex items-center gap-2 rounded-full bg-tangerine px-8 py-4 text-lg font-bold text-midnight shadow-[0_14px_50px_-12px_rgba(255,107,53,.9)] transition hover:bg-sun focus:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-midnight">
-                Explore Cars <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                Explore Cars
             </a>
             @auth
                 <a href="{{ route('dashboard') }}" class="inline-flex items-center rounded-full border border-cream/30 px-8 py-4 text-lg font-semibold text-cream transition hover:border-electric hover:text-electric">My dashboard</a>

@@ -96,4 +96,10 @@ class PolishTest extends TestCase
             ->withSession(['status' => 'profile-updated'])
             ->get(route('profile.edit'))->assertOk()->assertDontSee('toast-in', false);
     }
+
+    public function test_pages_set_their_own_document_title(): void
+    {
+        $this->get('/cars')->assertOk()->assertSee('<title>Cars · ROAMR</title>', false);
+        $this->get('/')->assertOk()->assertSee('<title>ROAMR — Car Rental &amp; Adventure</title>', false);
+    }
 }

@@ -1,0 +1,17 @@
+# Keep the upload small and never ship local secrets or dev-only files.
+.env
+.env.*
+!.env.example
+node_modules
+vendor
+tests
+.phpunit.cache
+.git
+storage/logs
+storage/framework
+storage/app
+public/hot
+public/storage
+bootstrap/cache/*.php
+database/*.sqlite
+*.log
