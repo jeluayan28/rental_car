@@ -49,7 +49,7 @@
                 <span class="h-px w-10 bg-sun"></span> Car rental &amp; adventure
             </p>
 
-            <h1 class="text-[11.5vw] font-extrabold uppercase leading-[0.88] tracking-tight text-cream sm:text-[9vw] lg:text-[clamp(3.5rem,6vw,5.75rem)]">
+            <h1 class="text-[10vw] font-extrabold uppercase leading-[0.88] tracking-tight text-cream sm:text-[7.8vw] lg:text-[clamp(3rem,5.1vw,4.9rem)]">
                 Your next<br>
                 <span class="bg-gradient-to-r from-tangerine via-tangerine to-sun bg-clip-text text-transparent">Adventure</span><br>
                 starts here.
@@ -71,8 +71,8 @@
     </div>
 
     {{-- Car: bleeds off the right edge, overlapping the road --}}
-    <div class="car-in relative z-10 -mb-3 ml-auto mt-10 w-[125%] max-w-none translate-x-[8%] sm:w-[105%] lg:absolute lg:bottom-4 lg:right-[-6vw] lg:mt-0 lg:w-[62vw] lg:max-w-[1100px] lg:translate-x-0">
-        <div class="parallax"><img src="{{ asset('car_landing%20page.png') }}" alt="Orange Ferrari 458 Speciale" class="-mb-[9%] -mt-[14%] w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]" draggable="false"></div>
+    <div class="car-in relative z-10 -mb-3 ml-auto mt-10 w-[125%] max-w-none translate-x-[8%] sm:w-[105%] lg:absolute lg:bottom-4 lg:right-[-2vw] lg:mt-0 lg:w-[62vw] lg:max-w-[1100px] lg:translate-x-0">
+        <div class="parallax"><img src="{{ asset('car-landing.png') }}" alt="Orange Ferrari 458 Speciale" class="-mb-[8%] -mt-[14%] w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]" draggable="false"></div>
 
         {{-- Spec badges --}}
         <div class="badge-float absolute left-[36%] top-[-2%] flex items-center gap-2 rounded-full border border-cream/15 bg-midnight/60 px-3 py-1.5 text-[11px] font-semibold text-cream backdrop-blur sm:text-xs">
@@ -81,7 +81,7 @@
         <div class="badge-float absolute right-[18%] top-[4%] hidden items-center gap-2 rounded-full border border-cream/15 bg-midnight/60 px-3 py-1.5 text-xs font-semibold text-cream backdrop-blur sm:flex" style="animation-delay: -2s">
             <span class="h-1.5 w-1.5 rounded-full bg-sun"></span> 0–100 in 3.9s
         </div>
-        <div class="badge-float absolute left-[2%] top-[40%] hidden items-center gap-2 rounded-full border border-cream/15 bg-midnight/60 px-3 py-1.5 text-xs font-semibold text-cream backdrop-blur md:flex" style="animation-delay: -4s">
+        <div class="badge-float absolute left-[-5%] top-[40%] hidden items-center gap-2 rounded-full border border-cream/15 bg-midnight/60 px-3 py-1.5 text-xs font-semibold text-cream backdrop-blur md:flex" style="animation-delay: -4s">
             <span class="h-1.5 w-1.5 rounded-full bg-tangerine"></span> Automatic · 4 seats
         </div>
     </div>

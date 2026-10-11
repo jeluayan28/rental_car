@@ -18,7 +18,7 @@
         <div class="grid min-h-screen lg:grid-cols-2">
 
             {{-- Brand panel (desktop): the car pulling up to the road --}}
-            <aside class="grain relative isolate hidden overflow-hidden border-r border-cream/10 lg:flex lg:flex-col lg:justify-between" aria-hidden="true">
+            <aside class="grain relative isolate hidden overflow-hidden border-r border-cream/10 lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between" aria-hidden="true">
                 <div class="pointer-events-none absolute inset-0 -z-10">
                     <div class="absolute -right-[20%] top-[25%] h-[34rem] w-[34rem] rounded-full bg-tangerine/20 blur-[130px]"></div>
                     <div class="absolute -left-[15%] -top-[10%] h-[26rem] w-[26rem] rounded-full bg-electric/10 blur-[120px]"></div>
@@ -35,8 +35,9 @@
                     </p>
                 </div>
 
-                <div class="relative mt-10 pb-24">
-                    <x-landing.hero-car :spin="true" class="car-in relative z-10 ml-auto w-[105%] max-w-none translate-x-[8%]" />
+                <div class="relative mt-6 pb-9">
+                    <img src="{{ asset('car-landing.png') }}" alt="" draggable="false"
+                         class="car-in relative z-10 -mb-[13.6%] -mt-[10%] ml-auto w-[110%] max-w-none translate-x-[6%] select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]">
                     <div class="absolute inset-x-0 bottom-0 h-20 border-t border-cream/10 bg-gradient-to-b from-graphite to-midnight">
                         <div class="absolute left-0 top-1/2 h-[3px] w-[calc(100%+120px)] -translate-y-1/2 opacity-70"><div class="road-dashes h-full w-full"></div></div>
                     </div>

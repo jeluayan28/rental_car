@@ -6,7 +6,7 @@
 
     {{-- The car has arrived: parked at the end of the road --}}
     <div class="pointer-events-none absolute right-[-8vw] top-[22%] hidden w-[46vw] max-w-[760px] lg:block" aria-hidden="true">
-        <div data-reveal><img src="{{ asset('car_landing%20page.png') }}" alt="" class="w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]" draggable="false"></div>
+        <div data-reveal><img src="{{ asset('car-landing.png') }}" alt="" class="w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,.55)]" draggable="false"></div>
     </div>
 
     <div class="relative z-10 pt-1">
